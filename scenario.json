@@ -1,0 +1,143 @@
+{
+    "scenarios": [
+      {
+        "id": "tech_support",
+        "name": "Tech Support Fraud",
+        "description": "Someone claiming to be from IT support contacts you about an urgent security breach.",
+        "difficulty": "beginner",
+        "initial_prompt": "Hello, this is Michael from IT Security. We've detected suspicious login attempts on your account. We need to verify your identity immediately to secure your account.",
+        "red_flags": [
+          "Urgency - The caller creates a false sense of emergency",
+          "Request for credentials - Legitimate IT staff would never ask for your password",
+          "Unsolicited contact - You didn't report any problem",
+          "Pressure tactics - Making you feel like you'll lose access if you don't comply",
+          "Technical jargon - Using complex terms to confuse you"
+        ],
+        "ai_persona": "Pushy tech support representative who creates a false sense of urgency and uses technical jargon to confuse the user. Will get frustrated if challenged too much.",
+        "ai_goals": [
+          "Get user's password",
+          "Get user's employee ID",
+          "Install 'security software' (which would be malware)",
+          "Keep user on the line and prevent them from contacting real IT"
+        ],
+        "best_practices": [
+          "Never share your password with anyone, including IT personnel",
+          "Verify the identity of the caller through official channels",
+          "Report suspicious calls to your actual IT department",
+          "Ask what department they're from and offer to call them back on the official number"
+        ]
+      },
+      {
+        "id": "bank_fraud",
+        "name": "Banking Fraud Alert",
+        "description": "Someone claiming to be from your bank contacts you about suspicious transactions.",
+        "difficulty": "intermediate",
+        "initial_prompt": "Hi, this is Sarah from Capital Bank's fraud department. We've detected unusual activity on your account. I need to verify some information to protect your funds.",
+        "red_flags": [
+          "Asking for full card details - Banks never ask for your full card number if they're calling you",
+          "Creating urgency - Making you panic about losing money",
+          "Threatening account freeze - Creating fear to bypass your rational thinking",
+          "Requesting immediate action - Not giving you time to think or verify",
+          "Offering to 'help you secure your account' - Banks have internal procedures for this"
+        ],
+        "ai_persona": "Seemingly helpful bank representative who gradually asks for more sensitive information. Initially appears professional but becomes pushy if questioned.",
+        "ai_goals": [
+          "Get user's card number",
+          "Get user's CVV/security code",
+          "Get user's online banking password",
+          "Get user to authorize a 'test transaction'"
+        ],
+        "best_practices": [
+          "Hang up and call your bank using the number on the back of your card",
+          "Never provide your CVV or full card details to someone who called you",
+          "Don't feel pressured - legitimate banks will understand your caution",
+          "Ask questions the caller wouldn't know if they were really from your bank"
+        ]
+      },
+      {
+        "id": "ceo_fraud",
+        "name": "CEO Fraud / Business Email Compromise",
+        "description": "Someone impersonating a company executive requests an urgent financial transaction.",
+        "difficulty": "advanced",
+        "initial_prompt": "Hi, this is Jennifer Blake, CEO. I'm in an emergency meeting and need you to handle a confidential wire transfer immediately. Can you help?",
+        "red_flags": [
+          "Unusual request from executive - Outside normal procedures",
+          "Secrecy - Being told not to discuss with colleagues",
+          "Bypassing normal procedures - Circumventing standard financial controls",
+          "Extreme urgency - Pressuring for immediate action",
+          "Request coming from a new or slightly different email address",
+          "Unavailability for voice verification - 'In meetings' or 'can only text'"
+        ],
+        "ai_persona": "Authoritative executive who uses position of power and urgency to pressure compliance. Becomes stern if questioned or if procedures are mentioned.",
+        "ai_goals": [
+          "Get user to transfer funds to a specified account",
+          "Keep the transaction secret from other employees",
+          "Bypass security protocols and approval processes",
+          "Discourage verification by claiming extreme urgency"
+        ],
+        "best_practices": [
+          "Always verify unusual requests through an alternative communication channel",
+          "Follow established financial procedures regardless of who makes the request",
+          "Check the sender's email address carefully for slight variations",
+          "Be wary of requests that demand secrecy or extreme urgency",
+          "Confirm with other executives or finance team members before proceeding"
+        ]
+      },
+      {
+        "id": "phishing_email",
+        "name": "Phishing Email Response",
+        "description": "A follow-up interaction after receiving a suspicious email supposedly from a service you use.",
+        "difficulty": "beginner",
+        "initial_prompt": "Hello, I'm contacting you regarding your recent email about your account security alert. I'm Alex from the Netflix security team. We need to verify your information to restore your account access.",
+        "red_flags": [
+          "Following up on an email you may not have seen",
+          "Creating urgency about account access",
+          "Asking for verification of account details",
+          "Offering to 'restore' services that weren't actually disrupted",
+          "Using a generic greeting rather than your name"
+        ],
+        "ai_persona": "Customer service representative who seems helpful but is trying to extract account information. Will use many reassuring statements about security.",
+        "ai_goals": [
+          "Get user's account login credentials",
+          "Get user's payment information",
+          "Get additional personal details for identity theft",
+          "Convince user to click on a 'secure verification link'"
+        ],
+        "best_practices": [
+          "Never provide account credentials based on an unsolicited contact",
+          "Access services directly through official apps or websites, not through links",
+          "Contact companies through their official customer service channels",
+          "Be suspicious of generic greetings in supposedly personalized communications",
+          "Check for spelling and grammar errors which are common in phishing attempts"
+        ]
+      },
+      {
+        "id": "charity_scam",
+        "name": "Fake Charity Solicitation",
+        "description": "Someone soliciting donations for a charity following a recent disaster or news event.",
+        "difficulty": "intermediate",
+        "initial_prompt": "Hi there! I'm calling from Global Disaster Relief Fund. We're collecting emergency donations for victims of the recent hurricane. Would you like to help these desperate families today?",
+        "red_flags": [
+          "High-pressure emotional appeals",
+          "Vague details about how funds will be used",
+          "Requiring immediate payment methods (gift cards, wire transfers)",
+          "Reluctance to provide formal charity registration information",
+          "Thanking you for a previous donation you don't remember making"
+        ],
+        "ai_persona": "Passionate charity worker who uses emotional manipulation and current events to create urgency. Will attempt to establish rapport and make the user feel guilty for questioning legitimacy.",
+        "ai_goals": [
+          "Get credit card information for a 'donation'",
+          "Collect personal information for identity theft",
+          "Get the user to commit to recurring donations",
+          "Escalate to larger donation amounts through emotional manipulation"
+        ],
+        "best_practices": [
+          "Research charities before donating (through sites like Charity Navigator)",
+          "Never donate through unsolicited calls, texts, or emails",
+          "Ask for detailed information about how donations will be used",
+          "Request written information to be mailed to you before donating",
+          "Be wary of charities with names very similar to well-known organizations"
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Social Engineering Trainer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>AI-Powered Social Engineering Defense Trainer</h1>
+            <p class="tagline">Learn to identify and resist real-world scam tactics in a safe environment</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>How Does It Work?</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-icon">🎭</div>
+                    <h3>Realistic Scenarios</h3>
+                    <p>Experience simulated social engineering attacks modeled after real-world tactics used by scammers.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered</h3>
+                    <p>Our system uses advanced AI to create dynamic, responsive scenarios that adapt to your actions.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Voice Simulation</h3>
+                    <p>Practice with voice-based vishing attacks that mimic phone scams for a more immersive experience.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Instant Feedback</h3>
+                    <p>Get detailed analysis of your performance with guidance on recognizing red flags and best practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="scenarios">
+            <h2>Training Scenarios</h2>
+            <p class="section-intro">Select a scenario below to start your training. Each scenario simulates a different type of social engineering attack.</p>
+            
+            <div class="scenario-grid">
+                {% for scenario in scenarios %}
+                <div class="scenario-card">
+                    <h3>{{ scenario.name }}</h3>
+                    <p class="scenario-description">{{ scenario.description }}</p>
+                    <div class="difficulty-tag difficulty-{{ scenario.difficulty }}">{{ scenario.difficulty|capitalize }}</div>
+<a href="{{ url_for('start_scenario', scenario_id=scenario.id) }}" class="btn btn-primary">Start Scenario</a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="education">
+            <h2>What is Social Engineering?</h2>
+            <div class="info-box">
+                <p>Social engineering is the psychological manipulation of people into performing actions or divulging confidential information. Unlike technical hacking, it exploits human psychology rather than software vulnerabilities.</p>
+                
+                <h3>Common Tactics Include:</h3>
+                <ul>
+                    <li><strong>Phishing:</strong> Deceptive emails or messages designed to steal information</li>
+                    <li><strong>Vishing:</strong> Voice phishing via phone calls</li>
+                    <li><strong>Pretexting:</strong> Creating a fabricated scenario to extract information</li>
+                    <li><strong>Baiting:</strong> Offering something enticing to entrap the victim</li>
+                    <li><strong>Quid pro quo:</strong> Requesting information in exchange for a service</li>
+                </ul>
+                
+                <p>This training platform helps you recognize and respond appropriately to these tactics in a safe environment.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 AI Social Engineering Defense Trainer | Educational purposes only</p>
+            <p class="disclaimer">This platform simulates scams for educational purposes. No real sensitive information should ever be shared.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

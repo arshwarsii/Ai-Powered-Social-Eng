@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Results - AI Social Engineering Trainer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>Training Results</h1>
+            <p class="tagline">Review your performance and learn from the experience</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="result-container">
+            <div class="result-header">
+                <h2>{{ scenario_summary.scenario_name }}</h2>
+                <div class="result-meta">
+                    <div class="success-indicator {{ scenario_summary.success_level|lower|replace(' ', '-') }}">
+                        {{ scenario_summary.success_level }}
+                    </div>
+                    <div class="duration">
+                        Duration: {{ scenario_summary.duration_seconds // 60 }} minutes {{ scenario_summary.duration_seconds % 60 }} seconds
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-overview">
+                <p class="feedback-summary">{{ scenario_summary.overall_feedback }}</p>
+            </div>
+
+            <div class="result-details">
+                <div class="result-section">
+                    <h3>Red Flags You Should Have Noticed</h3>
+                    <ul class="flag-list">
+                        {% for flag in scenario_summary.red_flags_missed %}
+                        <li>{{ flag }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="result-section">
+                    <h3>Information You Revealed</h3>
+                    {% if scenario_summary.information_revealed %}
+                    <ul class="revealed-list">
+                        {% for info in scenario_summary.information_revealed %}
+                        <li>{{ info }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p>No sensitive information revealed. Good job!</p>
+                    {% endif %}
+                </div>
+
+                <div class="result-section">
+                    <h3>Attacker's Goals</h3>
+                    <ul class="goals-list">
+                        {% for goal in scenario_summary.what_attacker_wanted %}
+                        <li>{{ goal }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="conversation-log">
+                <h3>Conversation Review</h3>
+                <div class="chat-replay">
+                    {% for message in scenario_summary.conversation %}
+                    <div class="message {{ 'user-message' if message.role == 'user' else 'ai-message' }}">
+                        <div class="message-sender">{{ 'You' if message.role == 'user' else 'Scammer' }}</div>
+                        <div class="message-content">{{ message.content }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="learning-points">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Always verify the identity of anyone requesting sensitive information.</li>
+                    <li>Be wary of artificial urgency - it's a common manipulation tactic.</li>
+                    <li>When in doubt, hang up and call back using an official, verified number.</li>
+                    <li>Legitimate organizations won't ask for passwords or full account details.</li>
+                    <li>Trust your instincts - if something feels wrong, it probably is.</li>
+                </ul>
+            </div>
+
+            <div class="next-actions">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">Try Another Scenario</a>
+                <a href="{{ url_for('scenario', scenario_id=scenario_summary.scenario_id) }}" class="btn btn-secondary">Retry This Scenario</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 AI Social Engineering Defense Trainer | Educational purposes only</p>
+        </div>
+    </footer>
+</body>
+</html>

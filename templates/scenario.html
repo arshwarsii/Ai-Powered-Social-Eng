@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ scenario.name }} - AI Social Engineering Trainer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="scenario-page">
+    <header class="scenario-header">
+        <div class="container">
+            <h1>{{ scenario.name }}</h1>
+            <p class="scenario-description">{{ scenario.description }}</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="simulation-container">
+            <!-- Simulation Controls -->
+            <div class="controls">
+                <div class="voice-controls">
+                    <label for="enable-voice" class="voice-toggle">
+                        <input type="checkbox" id="enable-voice" checked>
+                        <span class="toggle-label">Enable Voice</span>
+                    </label>
+                    <button id="initiate-call" class="btn btn-secondary">
+                        <span class="icon">📞</span> Receive Call
+                    </button>
+                </div>
+                
+                <div class="scenario-controls">
+                    <button id="end-scenario" class="btn btn-danger">End Scenario</button>
+                    <button id="report-scam" class="btn btn-warning">Report as Scam</button>
+                </div>
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="chat-container">
+                <div id="scenario-explanation" class="scenario-explanation" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; white-space: pre-wrap; background-color: #f9f9f9; display:none;">
+                    <!-- Scenario explanation will be displayed here -->
+                </div>
+                <div id="chat-messages" class="chat-messages">
+                    <!-- Initial system message -->
+                    <div class="message system-message">
+                        <p>Welcome to this training scenario. You'll be contacted by someone shortly. Respond as you would in real life, remembering to protect your sensitive information.</p>
+                    </div>
+                    
+                    <!-- Messages will be added here dynamically -->
+                </div>
+                
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Type your response here..." autofocus>
+                    <button id="send-message" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+            
+            <!-- Audio Player (hidden initially) -->
+            <audio id="audio-player" controls style="display: none;"></audio>
+        </div>
+        
+        <div class="scenario-info">
+            <div class="info-box">
+                <h3>Training Guidelines</h3>
+                <ul>
+                    <li>Respond naturally as you would in a real situation</li>
+                    <li>Pay attention to suspicious requests or pressure tactics</li>
+                    <li>Remember that this is a training exercise - no real data is at risk</li>
+                    <li>You can end the scenario at any time to see feedback</li>
+                </ul>
+            </div>
+            
+            <div class="user-role">
+                <h3>Your Role</h3>
+                <p>For this scenario, imagine you are:</p>
+                <ul>
+                    <li>An employee at a medium-sized company</li>
+                    <li>Working in the finance/HR/IT department</li>
+                    <li>You have access to company systems and sensitive information</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Feedback Modal (hidden initially) -->
+    <div id="feedback-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Scenario Results</h2>
+            
+            <div class="result-summary">
+                <h3>Performance Summary</h3>
+                <div id="success-level" class="success-indicator">Evaluating...</div>
+                <p id="overall-feedback">Analyzing your responses...</p>
+            </div>
+            
+            <div class="result-details">
+                <div class="result-section">
+                    <h4>Red Flags You Should Have Noticed</h4>
+                    <ul id="red-flags-list"></ul>
+                </div>
+                
+                <div class="result-section">
+                    <h4>Information You Revealed</h4>
+                    <ul id="revealed-info-list"></ul>
+                </div>
+                
+                <div class="result-section">
+                    <h4>What the Attacker Wanted</h4>
+                    <ul id="attacker-goals-list"></ul>
+                </div>
+            </div>
+            
+            <div class="next-steps">
+                <h3>Learning Points</h3>
+                <p>Based on your performance, here are some tips to improve your social engineering defense:</p>
+                <ul id="learning-points"></ul>
+                
+                <div class="action-buttons">
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Try Another Scenario</a>
+                    <button id="retry-scenario" class="btn btn-primary">Retry This Scenario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 AI Social Engineering Defense Trainer | Educational purposes only</p>
+        </div>
+    </footer>
+
+    <script>
+        // Store scenario information for JavaScript use
+        const scenarioId = "{{ scenario.id }}";
+        const initialPrompt = "{{ scenario.initial_prompt }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
