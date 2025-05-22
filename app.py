@@ -24,7 +24,7 @@ Session(app)
 # API Configuration
 OPENROUTER_API_KEY = "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"
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
-SITE_URL = "http://localhost:5000"  # Update with your actual URL
+SITE_URL = "https://cyberxpert.us"  # Update with your actual URL
 SITE_NAME = "Social Engineering Simulator"
 
 # Load scenarios
