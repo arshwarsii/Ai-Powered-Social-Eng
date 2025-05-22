@@ -22,7 +22,7 @@ app.config['SESSION_FILE_DIR'] = './flask_session'
 Session(app)
 
 # API Configuration
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 SITE_URL = "http://localhost:5000"  # Update with your actual URL
 SITE_NAME = "Social Engineering Simulator"
